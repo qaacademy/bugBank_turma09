@@ -22,9 +22,11 @@ public class CadastroPage {
 
     public String campoConfirmacaoSenha = "//body/div[@id='__next']/div[1]/div[2]/div[1]/div[2]/form[1]/div[5]/div[1]/input[1]";
 
-    public String campoContaComSaldoToogle = "//label[@id='toggleAddBalance']";
+    public String campoContaComSaldoToogle = "//label[@id='toggleAddBalance']/..";
 
     public String btnCadastrar = "//button[contains(text(),'Cadastrar')]";
+
+    public String btnFechar = "//a[@id='btnCloseModal']";
 
     public void preencherValorPorXpath(String elemento, String valor) {
         driver.findElement(By.xpath(elemento)).sendKeys(valor);
@@ -39,7 +41,7 @@ public class CadastroPage {
     }
 
     public void clicarToogleSaldo(){
-        driver.findElement(By.xpath(campoContaComSaldoToogle)).findElement(By.tagName("span")).click();
+        driver.findElement(By.xpath(campoContaComSaldoToogle)).click();
     }
 
 }
