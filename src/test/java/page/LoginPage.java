@@ -3,6 +3,10 @@ package page;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage {
 
@@ -25,6 +29,8 @@ public class LoginPage {
     }
 
     public void validarLogin() {
-        Assert.assertTrue(driver.getCurrentUrl().equals("http://localhost:3000/home"));
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(d -> d.getCurrentUrl().contains("/home"));
+        Assert.assertTrue("Erro na validação da homepage", driver.getCurrentUrl().equals("http://localhost:3000/home"));
     }
 }

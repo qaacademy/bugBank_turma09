@@ -3,6 +3,10 @@ package page;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CadastroPage {
 
@@ -33,6 +37,8 @@ public class CadastroPage {
     }
 
     public void clicarPorXpath(String elemento) {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(d -> d.findElement(By.xpath(elemento)).isDisplayed());
         driver.findElement(By.xpath(elemento)).click();
     }
 
