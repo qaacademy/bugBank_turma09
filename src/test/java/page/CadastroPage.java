@@ -11,6 +11,8 @@ import java.time.Duration;
 public class CadastroPage {
 
     WebDriver driver;
+    public String conta;
+    public String digito;
 
 
     public CadastroPage(WebDriver driver) {
@@ -31,8 +33,11 @@ public class CadastroPage {
     public String btnCadastrar = "//button[contains(text(),'Cadastrar')]";
 
     public String btnFechar = "//a[@id='btnCloseModal']";
+    public String mensagemContaCriada = "//p[@id='modalText']";
+
 
     public void preencherValorPorXpath(String elemento, String valor) {
+        driver.findElement(By.xpath(elemento)).clear();
         driver.findElement(By.xpath(elemento)).sendKeys(valor);
     }
 
@@ -42,12 +47,52 @@ public class CadastroPage {
         driver.findElement(By.xpath(elemento)).click();
     }
 
-    public void validarSeContaFoiCriadaComSucesso(){
+    public void validarSeContaFoiCriadaComSucesso() {
         Assert.assertTrue(driver.getPageSource().contains("foi criada com sucesso"));
     }
 
-    public void clicarToogleSaldo(){
+    public void clicarToogleSaldo() {
         driver.findElement(By.xpath(campoContaComSaldoToogle)).click();
     }
+
+    public void cadastrarNovaConta(String email, String nome, String senha) {
+        clicarPorXpath(btnRegistrar);
+        preencherValorPorXpath(campoEmail, email);
+        preencherValorPorXpath(campoNome, nome);
+        preencherValorPorXpath(campoSenha, senha);
+        preencherValorPorXpath(campoConfirmacaoSenha, senha);
+        clicarPorXpath(campoContaComSaldoToogle);
+        clicarPorXpath(btnCadastrar);
+        validarSeContaFoiCriadaComSucesso();
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(d -> d.findElement(By.xpath(mensagemContaCriada)).isDisplayed());
+        String mensagemCadastro = driver.findElement(By.xpath(mensagemContaCriada)).getText();
+        String[] numConta = mensagemCadastro.split("conta|foi");
+        String txtContaEdigito = numConta[1].trim();
+        String[] contaDigito = txtContaEdigito.split("-");
+        this.conta = contaDigito[0];
+        this.digito = contaDigito[1];
+        clicarPorXpath(btnFechar);
+    }
+
+    public void cadastrarNovaContaSemSaldo(String email, String nome, String senha) {
+        clicarPorXpath(btnRegistrar);
+        preencherValorPorXpath(campoEmail, email);
+        preencherValorPorXpath(campoNome, nome);
+        preencherValorPorXpath(campoSenha, senha);
+        preencherValorPorXpath(campoConfirmacaoSenha, senha);
+        clicarPorXpath(btnCadastrar);
+        validarSeContaFoiCriadaComSucesso();
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(d -> d.findElement(By.xpath(mensagemContaCriada)).isDisplayed());
+        String mensagemCadastro = driver.findElement(By.xpath(mensagemContaCriada)).getText();
+        String[] numConta = mensagemCadastro.split("conta|foi");
+        String txtContaEdigito = numConta[1].trim();
+        String[] contaDigito = txtContaEdigito.split("-");
+        this.conta = contaDigito[0];
+        this.digito = contaDigito[1];
+        clicarPorXpath(btnFechar);
+    }
+
 
 }
