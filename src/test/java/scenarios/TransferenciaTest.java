@@ -35,15 +35,15 @@ public class TransferenciaTest {
 
     @Test
     public void testeTransferenciaComSucesso() {
-        cadastroPage.cadastrarNovaConta("teste@qaacademy.com.br", "QA Academy", "123456");
+        cadastroPage.cadastrarNovaConta("teste005@qaacademy.com.br", "QA Academy", "123456");
         String conta1 = cadastroPage.conta;
         String digito1 = cadastroPage.digito;
-        cadastroPage.cadastrarNovaContaSemSaldo("teste2@qaacademy.com.br", "QA Academy 2", "123456");
+        cadastroPage.cadastrarNovaContaSemSaldo("teste00002@qaacademy.com.br", "QA Academy 2", "123456");
         String conta2 = cadastroPage.conta;
         String digito2 = cadastroPage.digito;
         System.out.println(conta2 + digito2);
 
-        loginPage.fazerLogin("teste@qaacademy.com.br", "123456");
+        loginPage.fazerLogin("teste005@qaacademy.com.br", "123456");
         homePage.clicarPorXpath(homePage.btnTransferencia);
         transferenciaPage.preencherValorPorXpath(transferenciaPage.campoNumeroDaConta, conta2);
         transferenciaPage.preencherValorPorXpath(transferenciaPage.campoDigitoConta, digito2);
@@ -55,15 +55,15 @@ public class TransferenciaTest {
 
     @Test
     public void testeTransferenciaComErro() {
-        cadastroPage.cadastrarNovaConta("teste001@qaacademy.com.br", "QA Academy", "123456");
+        cadastroPage.cadastrarNovaConta("teste006@qaacademy.com.br", "QA Academy", "123456");
         String conta1 = cadastroPage.conta;
         String digito1 = cadastroPage.digito;
-        cadastroPage.cadastrarNovaContaSemSaldo("teste002@qaacademy.com.br", "QA Academy 2", "123456");
+        cadastroPage.cadastrarNovaContaSemSaldo("teste007@qaacademy.com.br", "QA Academy 2", "123456");
         String conta2 = cadastroPage.conta;
         String digito2 = cadastroPage.digito;
         System.out.println(conta2 + digito2);
 
-        loginPage.fazerLogin("teste001@qaacademy.com.br", "123456");
+        loginPage.fazerLogin("teste006@qaacademy.com.br", "123456");
         homePage.clicarPorXpath(homePage.btnTransferencia);
         transferenciaPage.preencherValorPorXpath(transferenciaPage.campoNumeroDaConta, conta2);
         transferenciaPage.preencherValorPorXpath(transferenciaPage.campoDigitoConta, digito2);
