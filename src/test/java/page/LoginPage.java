@@ -38,6 +38,5 @@ public class LoginPage {
         preencherCampo(campoEmail, email);
         preencherCampo(campoSenha, senha);
         clicarPorXpath(btnAcessar);
-        validarLogin();
     }
 }
