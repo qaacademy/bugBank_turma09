@@ -52,6 +52,8 @@ public class CadastroPage {
     }
 
     public void clicarToogleSaldo() {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(d -> d.findElement(By.xpath(campoContaComSaldoToogle)).isDisplayed());
         driver.findElement(By.xpath(campoContaComSaldoToogle)).click();
     }
 

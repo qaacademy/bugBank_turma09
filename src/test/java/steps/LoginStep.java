@@ -53,7 +53,7 @@ public class LoginStep {
         cadastroPage.preencherValorPorXpath(cadastroPage.campoNome, nome);
         cadastroPage.preencherValorPorXpath(cadastroPage.campoSenha, senha);
         cadastroPage.preencherValorPorXpath(cadastroPage.campoConfirmacaoSenha, senha);
-        cadastroPage.clicarPorXpath(cadastroPage.campoContaComSaldoToogle);
+        cadastroPage.clicarToogleSaldo();
         cadastroPage.clicarPorXpath(cadastroPage.btnCadastrar);
         cadastroPage.validarSeContaFoiCriadaComSucesso();
         cadastroPage.clicarPorXpath(cadastroPage.btnFechar);
