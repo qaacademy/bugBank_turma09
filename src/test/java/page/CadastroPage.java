@@ -63,7 +63,7 @@ public class CadastroPage {
         preencherValorPorXpath(campoNome, nome);
         preencherValorPorXpath(campoSenha, senha);
         preencherValorPorXpath(campoConfirmacaoSenha, senha);
-        clicarPorXpath(campoContaComSaldoToogle);
+        clicarToogleSaldo();
         clicarPorXpath(btnCadastrar);
         validarSeContaFoiCriadaComSucesso();
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
