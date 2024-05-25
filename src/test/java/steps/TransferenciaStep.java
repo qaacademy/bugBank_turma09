@@ -39,11 +39,13 @@ public class TransferenciaStep {
         homePage = new HomePage(driver);
         driver.get("http://localhost:3000/");
     }
+
     @Dado("fazer login no bugbank com email:{string} e a senha: {string}")
     public void queEuEstejaLogadoNoBugbankComEmailEASenha(String email, String senha) {
         loginPage.fazerLogin(email, senha);
 
     }
+
     @Quando("clicar no botao transferencia")
     public void clicarNoBotaoTransferir() {
         homePage.clicarPorXpath(homePage.btnTransferencia);
@@ -62,7 +64,8 @@ public class TransferenciaStep {
     @Dado("que possua duas contas cadastradas com os dados")
     public void quePossuaDuasContasCadastradasComOsDados(DataTable table) {
         List<Map<String, String>> listaDeContas = table.asMaps(String.class, String.class);
-        cadastroPage.cadastrarNovaConta(listaDeContas.get(0).get("email"), listaDeContas.get(0).get("nome"), listaDeContas.get(0).get("senha"));
+        System.out.println(listaDeContas.get(0).get("email"));
+        cadastroPage.cadastrarNovaConta(listaDeContas.get(2).get("email"), listaDeContas.get(0).get("nome"), listaDeContas.get(0).get("senha"));
         cadastroPage.cadastrarNovaContaSemSaldo(listaDeContas.get(0).get("email_2"), listaDeContas.get(0).get("nome_2"), listaDeContas.get(0).get("senha_2"));
         conta2 = cadastroPage.conta;
         digito2 = cadastroPage.digito;

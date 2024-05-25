@@ -96,5 +96,11 @@ public class CadastroPage {
         clicarPorXpath(btnFechar);
     }
 
+    public void validarMensagemDeErroEmail(String msg) {
+        String elementoEmailMensagem = "//p[contains(text(),'"+msg+"')]";
+        String mensagemAutal = driver.findElement(By.xpath(elementoEmailMensagem)).getText();
+        Assert.assertEquals(msg, mensagemAutal);
+    }
+
 
 }
