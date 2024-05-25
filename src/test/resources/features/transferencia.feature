@@ -1,4 +1,5 @@
 #language: pt
+@smoke
 Funcionalidade: Transferencia de valores
 
   Cenario: Realizar transferencia com sucesso

@@ -65,7 +65,7 @@ public class TransferenciaStep {
     public void quePossuaDuasContasCadastradasComOsDados(DataTable table) {
         List<Map<String, String>> listaDeContas = table.asMaps(String.class, String.class);
         System.out.println(listaDeContas.get(0).get("email"));
-        cadastroPage.cadastrarNovaConta(listaDeContas.get(2).get("email"), listaDeContas.get(0).get("nome"), listaDeContas.get(0).get("senha"));
+        cadastroPage.cadastrarNovaConta(listaDeContas.get(0).get("email"), listaDeContas.get(0).get("nome"), listaDeContas.get(0).get("senha"));
         cadastroPage.cadastrarNovaContaSemSaldo(listaDeContas.get(0).get("email_2"), listaDeContas.get(0).get("nome_2"), listaDeContas.get(0).get("senha_2"));
         conta2 = cadastroPage.conta;
         digito2 = cadastroPage.digito;
