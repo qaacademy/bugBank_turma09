@@ -10,4 +10,5 @@ Para Executar:
 - No diretorio bugbank, executar o comando: yarn
 - yarn dev
 - git clone https://github.com/qaacademy/bugBank_turma09.git
-- mvn clean install - Fazer o build e executar os testes automatizados que estão no pacote /test/java
+-  mvn test -Dtest=Runner - Fazer o build e executar os testes automatizados que estão no pacote /test/java
+- 
